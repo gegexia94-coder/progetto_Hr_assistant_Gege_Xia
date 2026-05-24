@@ -1,4 +1,5 @@
 import os
+import shutil
 import chainlit as cl
 
 from config import Config
@@ -8,8 +9,9 @@ from utils import LLMHelper
 
 
 db = Database()
+dp = DocumentProcessor()
 
-added, updated, removed = DocumentProcessor.process_documents(db)
+added, updated, removed = dp.process_documents(db)
 
 print(
     f"Document sync complete: "
@@ -30,11 +32,40 @@ def build_actions():
             payload={}
         ),
         cl.Action(
-            name="hello_world",
-            label="Ciao Mondo",
+            name="clear_database",
+            label="Svuota Database",
             payload={}
         ),
     ]
+
+
+def is_supported_upload(file_name):
+    extension = os.path.splitext(file_name)[1].lower()
+    return extension in DocumentProcessor.SUPPORTED_EXTENSIONS
+
+
+async def process_uploaded_file(file):
+    file_name = os.path.basename(file.name)
+
+    if not is_supported_upload(file_name):
+        return f"File non supportato: {file_name}"
+
+    os.makedirs(Config.DOCUMENTS_DIR, exist_ok=True)
+
+    destination = os.path.join(Config.DOCUMENTS_DIR, file_name)
+
+    shutil.copy2(file.path, destination)
+
+    db.remove_document_by_source(file_name)
+
+    documents, metadatas, ids = dp.process_single_document(destination)
+
+    if not documents:
+        return f"File salvato ma non indicizzato: {file_name}"
+
+    db.add_documents(documents, metadatas, ids)
+
+    return f"File caricato e indicizzato: {file_name} ({len(documents)} chunk)"
 
 
 @cl.on_chat_start
@@ -68,7 +99,6 @@ async def start():
 @cl.action_callback("database_stats")
 async def on_database_stats(action):
     stats = db.stats()
-
     sources = "\n".join(f"- {source}" for source in stats["sources"])
 
     await cl.Message(
@@ -85,7 +115,7 @@ async def on_database_stats(action):
 @cl.action_callback("reindex_database")
 async def on_reindex_database(action):
     db.clear()
-    added, updated, removed = DocumentProcessor.process_documents(db)
+    added, updated, removed = dp.process_documents(db)
     stats = db.stats()
 
     await cl.Message(
@@ -101,25 +131,47 @@ async def on_reindex_database(action):
     ).send()
 
 
-@cl.action_callback("hello_world")
-async def on_hello_world(action):
+@cl.action_callback("clear_database")
+async def on_clear_database(action):
+    db.clear()
+
     await cl.Message(
-        content="Ciao Mondo. I pulsanti Chainlit funzionano.",
+        content="Database svuotato. Premi Reindex Database per ricostruirlo.",
         actions=build_actions(),
     ).send()
 
 
 @cl.on_message
 async def handle_message(message: cl.Message):
+    if message.elements:
+        results = []
+
+        for file in message.elements:
+            result = await process_uploaded_file(file)
+            results.append(result)
+
+        await cl.Message(content="\n".join(results)).send()
+
+        if not message.content.strip():
+            return
+
     user_question = message.content
+
     results = db.query(user_question)
+
+    if not results["documents"] or not results["documents"][0]:
+        await cl.Message(
+            content="Nessun curriculum trovato per questa richiesta.",
+            actions=build_actions(),
+        ).send()
+        return
 
     filename = results["metadatas"][0][0]["source"]
     text_found = results["documents"][0][0]
 
     context_lines = DocumentProcessor.read_first_lines(
         os.path.join(Config.DOCUMENTS_DIR, filename),
-        limit=200,
+        n_lines=200,
     )
 
     candidate_name = await LLMHelper.get_candidate_name(context_lines)
