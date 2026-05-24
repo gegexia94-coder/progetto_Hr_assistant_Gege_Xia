@@ -4,6 +4,7 @@ import chainlit as cl
 import chromadb
 import ollama
 
+from config import Config
 from dotenv import load_dotenv
 from chromadb.utils import embedding_functions
 
@@ -39,14 +40,16 @@ def load_resumes(documents_dir="resumes"):
 documents, metadatas, ids = load_resumes()
 
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-    api_key=openai_key,
-    model_name="text-embedding-3-small"
+   api_key=openai_key,
+   model_name=Config.EMBEDDING_MODEL
 )
 
-chroma_client = chromadb.Client()
+chroma_client = chromadb.PersistentClient(
+    path=Config.PERSISTENT_DIR
+)
 
 collection = chroma_client.get_or_create_collection(
-    name="CVs",
+    name=Config.COLLECTION_NAME,
     embedding_function=openai_ef
 )
 
