@@ -1,0 +1,35 @@
+### Profilo candidato
+Nome: Giulia Ferraro
+Ruolo: Data Analyst / Business Intelligence Specialist
+Città: Milano
+Esperienza: 4 anni
+Sintesi: Giulia è una candidata specializzata nell'analisi dati, nella costruzione di dashboard e nel monitoraggio di KPI aziendali. Ha lavorato in contesti e-commerce, retail e servizi digitali, trasformando dati grezzi in insight utili per decisioni manageriali.
+
+### Competenze principali
+- Analisi dati con Python, pandas e SQL
+- Dashboard con Power BI, Looker Studio e Tableau
+- KPI commerciali, marketing, retention e customer journey
+- Pulizia dataset, controllo qualità dati e normalizzazione
+- Report mensili per direzione, sales e marketing
+- A/B test, funnel analysis e cohort analysis
+- Comunicazione semplice dei risultati a team non tecnici
+
+### Esperienza lavorativa
+Data Analyst presso RetailNow
+- Ha creato dashboard per vendite, margini, conversion rate e stock.
+- Ha ridotto del 30% il tempo di preparazione dei report settimanali.
+- Ha individuato prodotti con bassa rotazione e suggerito azioni promozionali.
+- Ha collaborato con marketing per analizzare campagne email e social.
+
+Junior BI Specialist presso Digital Metrics
+- Ha costruito query SQL per estrarre dati da database aziendali.
+- Ha automatizzato report ripetitivi con Python.
+- Ha supportato il team finance nel controllo dei ricavi mensili.
+
+### Progetti rilevanti
+- Dashboard vendite nazionale con filtri per regione, categoria e periodo.
+- Analisi churn clienti per individuare utenti a rischio abbandono.
+- Studio performance campagne ADV con ROI, CPA e conversion rate.
+
+### Punti di forza
+Profilo molto adatto quando l'azienda cerca una persona capace di leggere dati, costruire dashboard, spiegare numeri e aiutare decisioni operative.

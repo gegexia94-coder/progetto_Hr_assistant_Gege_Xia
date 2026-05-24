@@ -1,0 +1,35 @@
+### Profilo candidato
+Nome: Marco Bellini
+Ruolo: UX/UI Designer / Product Designer
+Città: Bologna
+Esperienza: 5 anni
+Sintesi: Marco è un designer digitale specializzato in esperienza utente, prototipazione e design system. Ha lavorato su app mobile, piattaforme SaaS e siti e-commerce, migliorando usabilità, chiarezza dei flussi e conversioni.
+
+### Competenze principali
+- UX research, interviste utenti e analisi bisogni
+- Wireframe, user flow e prototipi interattivi
+- UI design con Figma
+- Design system, componenti riusabili e linee guida visive
+- Test di usabilità e raccolta feedback
+- Ottimizzazione form, onboarding e checkout
+- Collaborazione con sviluppatori frontend
+
+### Esperienza lavorativa
+Product Designer presso AppFlow
+- Ha ridisegnato il processo di onboarding riducendo gli abbandoni.
+- Ha creato un design system con bottoni, card, modali e form riusabili.
+- Ha condotto test utenti su prototipi prima dello sviluppo.
+- Ha collaborato con product manager e sviluppatori React.
+
+UX/UI Designer presso ShopLab
+- Ha migliorato il checkout e-commerce rendendolo più semplice.
+- Ha progettato pagine prodotto più leggibili e orientate alla conversione.
+- Ha creato versioni mobile-first per campagne stagionali.
+
+### Progetti rilevanti
+- Redesign dashboard SaaS per utenti non tecnici.
+- Prototipo app prenotazioni con flusso rapido in 3 step.
+- Miglioramento accessibilità colori, font e stati errore.
+
+### Punti di forza
+Profilo ideale per aziende che vogliono migliorare interfaccia, esperienza utente, conversioni e chiarezza visiva dei prodotti digitali.

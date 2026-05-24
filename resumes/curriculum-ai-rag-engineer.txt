@@ -1,0 +1,36 @@
+### Profilo candidato
+Nome: Davide Rinaldi
+Ruolo: AI Engineer / RAG Developer
+Città: Padova
+Esperienza: 3 anni
+Sintesi: Davide è uno sviluppatore specializzato in applicazioni AI basate su LLM, retrieval augmented generation, embeddings e chatbot aziendali. Ha costruito prototipi per ricerca documentale, assistenti interni e analisi automatica di testi.
+
+### Competenze principali
+- Python per applicazioni AI
+- OpenAI API, chat completions ed embeddings
+- Vector database: ChromaDB e FAISS
+- RAG su documenti PDF, TXT e knowledge base aziendali
+- Prompt design e controllo hallucination
+- Stream delle risposte in interfacce chat
+- FastAPI, Chainlit e prototipazione rapida
+- Gestione .env, API key e dipendenze Poetry
+
+### Esperienza lavorativa
+AI Developer presso DocuMind
+- Ha creato un assistente RAG per cercare informazioni in manuali tecnici.
+- Ha integrato embeddings OpenAI con ChromaDB persistente.
+- Ha progettato prompt per rispondere solo usando il contesto trovato.
+- Ha migliorato logging e gestione errori dell'app.
+
+Python Developer presso SmartOps
+- Ha sviluppato script per pulizia documenti e chunking.
+- Ha creato API interne per interrogare dati aziendali.
+- Ha collaborato con team prodotto per trasformare prototipi in demo.
+
+### Progetti rilevanti
+- Chatbot HR per ricerca candidati da CV testuali.
+- Assistente documentale per procedure interne aziendali.
+- Pipeline di sincronizzazione documenti con hash file e reindex.
+
+### Punti di forza
+Profilo ideale per costruire assistenti AI, sistemi RAG, chatbot su documenti, ricerca semantica e automazioni basate su LLM.
