@@ -1,15 +1,12 @@
 import chromadb
 
-from chromadb.utils import embedding_functions
 from config import Config
+from custom_embedding import CustomEmbeddingFunction
 
 
 class Database:
     def __init__(self):
-        self.openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-            api_key=Config.OPENAI_KEY,
-            model_name=Config.EMBEDDING_MODEL,
-        )
+        self.embedding_function = CustomEmbeddingFunction()
 
         self.client = chromadb.PersistentClient(
             path=Config.PERSISTENT_DIR
@@ -17,21 +14,14 @@ class Database:
 
         self.collection = self.client.get_or_create_collection(
             name=Config.COLLECTION_NAME,
-            embedding_function=self.openai_ef,
+            embedding_function=self.embedding_function,
         )
 
     def add_documents(self, documents, metadatas, ids):
-        self.collection.add(
-            documents=documents,
-            metadatas=metadatas,
-            ids=ids,
-        )
+        self.collection.add(documents=documents, metadatas=metadatas, ids=ids)
 
     def query(self, query_text, n_results=1):
-        return self.collection.query(
-            query_texts=[query_text],
-            n_results=n_results,
-        )
+        return self.collection.query(query_texts=[query_text], n_results=n_results)
 
     def get_tracked_files(self):
         result = self.collection.get()

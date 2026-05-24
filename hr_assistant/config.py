@@ -10,6 +10,7 @@ class Config:
     COLLECTION_NAME = "CVs"
     PERSISTENT_DIR = "data/chromadb"
 
+    EMBEDDING_PROVIDER = "openai"
     EMBEDDING_MODEL = "text-embedding-3-small"
     OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
