@@ -1,0 +1,7 @@
+LUCA VERDI
+
+### PROFILO
+Software Developer con esperienza in Python, API, automazioni e applicazioni web.
+
+### COMPETENZE
+Python, backend, API, Git, automazioni.
