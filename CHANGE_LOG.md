@@ -11,3 +11,16 @@ Per mantenere il progetto stabile e consegnabile, scelgo una soluzione alternati
 - mantengo il codice più leggero e adatto al mio ambiente.
 
 Questa è una scelta tecnica consapevole, non un errore del progetto.
+
+## Avanzamento 07 - Nota tecnica su MarkItDown
+
+Durante la preparazione del caricamento file con estensioni diverse è stata valutata la libreria `markitdown`.
+
+Nel mio ambiente attuale l'installazione non è compatibile perché `markitdown` dipende da `magika`, che richiede `onnxruntime >=1.17.0`, mentre il progetto usa già una versione diversa di `onnxruntime`.
+
+Per mantenere il progetto stabile, scelgo una soluzione progressiva:
+- supporto subito file testuali e dati: `.txt`, `.csv`, `.json`, `.xml`, `.html`, `.zip`;
+- rimando PDF, DOCX, PPTX e XLSX a uno step separato;
+- evito di introdurre dipendenze pesanti senza controllo.
+
+Questa è una scelta tecnica consapevole per proteggere la stabilità del progetto.
